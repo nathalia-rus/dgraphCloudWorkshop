@@ -94,6 +94,7 @@ function App() {
         updateTodo={updateTodo}
         deleteTodo={deleteTodo}
         clearCompletedTodos={clearCompletedTodos}
+        todosTitle="Todos with Dgraph Cloud"
       />
     </>
   );
