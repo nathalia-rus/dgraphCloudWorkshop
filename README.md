@@ -1,4 +1,4 @@
-# dgraphCloudTutorial
+# dgraphCloudWorkshop
 
 ### Content <br> 
 - playground: in progress
