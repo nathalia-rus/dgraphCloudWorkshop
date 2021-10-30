@@ -17,7 +17,18 @@ function App() {
   const addNewTodo = async (value: string) => {
     add({
       variables: { todo: { value: value, completed: false } },
-      refetchQueries: [{ query: GET_TODOS }],
+      update(cache, { data }) {
+        const existing: any = cache.readQuery({ query: GET_TODOS });
+        cache.writeQuery({
+          query: GET_TODOS,
+          data: {
+            queryTodo: [
+              ...(existing ? existing.queryTodo : []),
+              ...data.addTodo.todo,
+            ],
+          },
+        });
+      },
     });
   };
 
