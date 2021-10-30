@@ -38,4 +38,14 @@ export const DELETE_TODO = gql`
   }
 `;
 
+export const CLEAR_COMPLETED_TODOS = gql`
+  mutation updateTodo {
+    deleteTodo(filter: { completed: true }) {
+      todo {
+        id
+      }
+    }
+  }
+`;
+
 // useMutation hook will turn the above to executable functions
