@@ -6,4 +6,6 @@
 
 ### Resources <br>
 https://dgraph.io/blog/post/todo-slash-graphql/ <br>
-https://www.apollographql.com/docs/react/caching/cache-interaction/#using-cachemodify <br>
+https://www.apollographql.com/docs/react/caching/cache-interaction/ <br>
+https://dgraph.io/docs/cloud/ <br>
+https://dgraph.io/blog/post/slash-intro-to-schema/ <br>
