@@ -16,6 +16,18 @@ export const ADD_TODO = gql`
   }
 `;
 
+export const UPDATE_TODO = gql`
+  mutation updateTodo($id: ID!, $todo: TodoPatch!) {
+    updatetodo(input: { filter: { id: [$id], set: $todo } }) {
+      todo {
+        id
+        value
+        completed
+      }
+    }
+  }
+`;
+
 export const DELETE_TODO = gql`
   mutation deleteTodo($id: ID!) {
     deleteTodo(filter: { id: [$id] }) {
