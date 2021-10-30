@@ -16,4 +16,14 @@ export const ADD_TODO = gql`
   }
 `;
 
-// useMutation hook will turn the above to executable function
+export const DELETE_TODO = gql`
+  mutation deleteTodo($id: ID!) {
+    deleteTodo(filter: { id: [$id] }) {
+      todo {
+        id
+      }
+    }
+  }
+`;
+
+// useMutation hook will turn the above to executable functions
