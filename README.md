@@ -1,7 +1,7 @@
 # dgraphCloudTutorial
 
 ### Content <br> 
-- playground: 
+- playground: in progress
 - Todo App: going through official tutorial and adding the rest of the functionalities
 
 ### Resources <br>
