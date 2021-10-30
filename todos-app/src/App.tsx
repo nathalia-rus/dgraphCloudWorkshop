@@ -2,7 +2,7 @@ import "./App.css";
 import { Todos, TodoType } from "react-todomvc";
 import "react-todomvc/dist/todomvc.css";
 import { GET_TODOS } from "./graphql/query";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery, useMutation, StoreObject, Reference } from "@apollo/client";
 import { ADD_TODO, DELETE_TODO } from "./graphql/mutation";
 
 // GraphQL constants
@@ -35,7 +35,11 @@ function App() {
   const deleteTodo = async (id: string) => {
     del({
       variables: { id },
-      refetchQueries: [{ query: GET_TODOS }],
+      update(cache, { data }) {
+        data.deleteTodo.todo.map((t: StoreObject | Reference) =>
+          cache.evict({ id: cache.identify(t) })
+        );
+      },
     });
   };
 
