@@ -3,7 +3,7 @@ import { Todos, TodoType } from "react-todomvc";
 import "react-todomvc/dist/todomvc.css";
 import { GET_TODOS } from "./graphql/query";
 import { useQuery, useMutation, StoreObject, Reference } from "@apollo/client";
-import { ADD_TODO, DELETE_TODO } from "./graphql/mutation";
+import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from "./graphql/mutation";
 
 // GraphQL constants
 
@@ -13,6 +13,7 @@ function App() {
   // make add a function that will execute the GraphQL mutation.
   const [add] = useMutation(ADD_TODO);
   const [del] = useMutation(DELETE_TODO);
+  const [update] = useMutation(UPDATE_TODO);
 
   const addNewTodo = async (value: string) => {
     add({
@@ -32,6 +33,26 @@ function App() {
     });
   };
 
+  const updateTodo = async (updatedTodo: TodoType) => {
+    update({
+      variables: {
+        id: updatedTodo.id,
+        todo: { value: updatedTodo.value, completed: updatedTodo.completed },
+      },
+      update(cache, { data }) {
+        data.updateTodo.todo.map((t: TodoType) => {
+          return cache.modify({
+            id: cache.identify(t),
+            fields: {
+              value: () => t.value,
+              completed: () => t.completed,
+            },
+          });
+        });
+      },
+    });
+  };
+
   const deleteTodo = async (id: string) => {
     del({
       variables: { id },
@@ -45,7 +66,7 @@ function App() {
 
   // GET
   const { loading, error, data } = useQuery(GET_TODOS);
-  const updateTodo = async (value: TodoType) => {};
+
   const clearCompletedTodos = async () => {};
 
   if (loading) return <p>Loading todos...</p>;
