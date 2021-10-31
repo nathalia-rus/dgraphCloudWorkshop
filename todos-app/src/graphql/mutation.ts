@@ -39,7 +39,7 @@ export const DELETE_TODO = gql`
 `;
 
 export const CLEAR_COMPLETED_TODOS = gql`
-  mutation updateTodo {
+  mutation clearTodo {
     deleteTodo(filter: { completed: true }) {
       todo {
         id
