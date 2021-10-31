@@ -16,6 +16,19 @@ export const ADD_TODO = gql`
   }
 `;
 
+// JSON res example:
+// "data": {
+//   "addTodo": {
+//     "todo": [
+//       {
+//         "id": "0x7a8ac2f48",
+//         "value": "New Todo Example",
+//         "completed": false
+//       }
+//     ]
+//   }
+// }
+
 export const UPDATE_TODO = gql`
   mutation updateTodo($id: ID!, $todo: TodoPatch!) {
     updateTodo(input: { filter: { id: [$id] }, set: $todo }) {
