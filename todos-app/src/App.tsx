@@ -10,10 +10,7 @@ import {
   UPDATE_TODO,
 } from "./graphql/mutation";
 
-// GraphQL constants
-
 function App() {
-  // Get data etc
 
   // make add a function that will execute the GraphQL mutation.
   const [add] = useMutation(ADD_TODO);
