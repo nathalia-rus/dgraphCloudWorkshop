@@ -1,5 +1,8 @@
 # dgraphCloudWorkshop
 
+### Slides <br> 
+https://docs.google.com/presentation/d/1sgYZfeVf4f1v9MMDXI7ootSl-DtAKeWt/edit?usp=sharing&ouid=103612350689387273242&rtpof=true&sd=true
+
 ### Content <br> 
 - playground: in progress
 - Todo App: going through official tutorial and adding the rest of the functionalities
